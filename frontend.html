@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEnd</title>
+</head>
+<style>
+    #container{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        grid-template-rows: repeat(1,auto);
+        gap:10px;
+        /* border: 1px solid red; */
+    }
+    #container>div{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        text-align: center;
+    }
+    h1{
+        text-align: center;
+    }
+    h1:nth-child(2){
+        text-align: center;
+        color:orange;
+    }
+    p+img{
+        justify-content: center;
+        height:40px;
+        margin-top:-30px;
+    }
+</style>
+<body>
+    <h1>Frontend</h1>
+    <h1>Strategic Investor</h1>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var invArr = JSON.parse(localStorage.getItem("investorData"))
+    console.log(invArr)
+    invArr.forEach(function(el){
+        var profile = document.createElement("div");
+        
+        var Inimg = document.createElement("img");
+        Inimg.setAttribute("src", el.invImg);
+
+        var Inname = document.createElement("h3");
+        Inname.innerText = el.invName;
+        
+        var Inrole = document.createElement("p");
+        Inrole.innerText = el.invRole;
+
+        var Incompany = document.createElement("img");
+        Incompany.setAttribute("src", el.invCompany);
+
+        profile.append(Inimg,Inname,Inrole,Incompany);
+        document.querySelector("#container").append(profile);
+    });
+        
+</script>

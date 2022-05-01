@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BackEnd</title>
+</head>
+<style>
+    #forms{
+        display:grid;
+        width:25%;
+        gap: 20px;
+        margin:auto;
+        
+    }
+    #forms>input:nth-child(5){
+        border:0px;
+        background-color:rosybrown;
+        color:lavender;
+        padding: 5px 0px 5px 0px;
+        font-weight: bold;
+    }
+    #forms>input:nth-child(5):hover{
+        color:orangered;
+        background-color: lavender;
+        border:0px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <form id="forms" action="">
+        <input id="Name"  placeholder="name" type="text">
+        <input id="imageUrl" placeholder="imgURL" type="text">
+        <input id="role" placeholder="Role" type="text">
+        <input id="CompanyLogo" placeholder="comapanyLogo" type="text">
+        
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#forms").addEventListener("submit",myFun)
+    var arr = JSON.parse(localStorage.getItem("investorData")) || [];
+     
+     function myFun(){
+         event.preventDefault();
+
+         var  ObjInv = {
+            invImg: forms.imageUrl.value,
+            invName: forms.Name.value,
+            invRole: forms.role.value,
+            invCompany: forms.CompanyLogo.value,   
+         };
+
+         arr.push(ObjInv);
+         console.log(arr);
+         localStorage.setItem("investorData",JSON.stringify(arr));
+     }
+</script>
